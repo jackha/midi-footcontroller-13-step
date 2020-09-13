@@ -486,12 +486,12 @@ void loop() {
   if ((i == settingButtonIndex) && (swCurrent[settingButtonIndex] == LOW) && (mode == modeNote))
   {
     int y = (timeNow - timeStartReading[settingButtonIndex]) * 8 / settingModePressTime;
-    if (y > 0 && y <= 7) 
+    if (y <= 7) 
     {
       matrix.clear();
       matrix.drawLine(timeNow % 8,7-y, timeNow % 8,7-y, LED_ON);
       matrix.writeDisplay();  // write the changes we just made to the display
-    } else if (y > 7) {
+    } else {
       matrixImage(setting_mode_bmp);  // show that we're already going to enter setting mode
     }
     matrixClear(0);
